@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
+const router = require("./routes/book-routes");
 // get the routes
 
 // config the environment variables
@@ -13,12 +13,12 @@ const app = express();
 app.use(express.json());
 
 // middlewares
-app.use("/", (req, res) => {
-  res.send("welcome");
-});
+app.use("/books", router);
 
 mongoose
-  .connect(process.env.Mongo_Url)
+  .connect(
+    "mongodb+srv://saurabh:saurabh@cluster0.zyllq9i.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("connection made");
   })
