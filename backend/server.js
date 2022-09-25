@@ -16,9 +16,7 @@ app.use(express.json());
 app.use("/books", router);
 
 mongoose
-  .connect(
-    "mongodb+srv://saurabh:saurabh@cluster0.zyllq9i.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.Mongo_Url)
   .then(() => {
     console.log("connection made");
   })
